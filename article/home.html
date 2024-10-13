@@ -17,7 +17,7 @@
             background-size: cover;
             color: white;
             font-family: Arial, sans-serif;
-            display: none; /* Initially hidden */
+            display: none;
         }
 
         .header-text {
@@ -101,19 +101,19 @@
             margin: 20px 0;
             border-radius: 8px;
         }
-        /* Login Form Styles */
+    
         .login-form, .register-form {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #222; /* Dark background */
-            color: white; /* White text */
+            background-color: #222; 
+            color: white; 
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            display: none; /* Initially hidden */
+            display: none; 
         }
 
         .login-form h2, .register-form h2 {
@@ -121,17 +121,17 @@
         }
 
         .login-form input, .register-form input {
-            width: 60%; /* Shortened width */
+            width: 60%; 
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #333; /* Darker input background */
-            color: white; /* White text in input */
+            background-color: #333; 
+            color: white; 
         }
 
         .login-form input::placeholder, .register-form input::placeholder {
-            color: #aaa; /* Light placeholder text */
+            color: #aaa; 
         }
 
         .login-form button, .register-form button {
@@ -152,7 +152,7 @@
 </head>
 <body>
 
-    <!-- Login Form -->
+
     <div class="login-form" id="loginForm">
         <h2>Login</h2>
         <input type="text" id="loginUsername" placeholder="Username" required>
@@ -161,7 +161,7 @@
         <p>Don't have an account? <a href="javascript:void(0);" onclick="showRegister()" style="color: #aaa;">Register</a></p>
     </div>
 
-    <!-- Register Form -->
+    
     <div class="register-form" id="registerForm">
         <h2>Register</h2>
         <input type="text" id="registerUsername" placeholder="Username" required>
@@ -218,9 +218,7 @@
         </div>
     </section>
     <script>
-        let users = []; // Array to store registered users
-
-        // Show the login form
+        let users = [];
         document.getElementById('loginForm').style.display = 'flex';
 
         function handleLogin() {
@@ -247,16 +245,16 @@
                 return;
             }
 
-            // Check if username already exists
+            
             if (users.find(u => u.username === username)) {
                 alert('Username already taken!');
                 return;
             }
 
-            // Register the user
+           
             users.push({ username, password });
             alert('Registration successful! Please log in.');
-            showLogin(); // Switch back to login form
+            showLogin();
         }
 
         function showRegister() {
