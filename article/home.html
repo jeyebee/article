@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTU PH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header {
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('media/background.jpg');
+            background-position: center;
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: none; /* Initially hidden */
+        }
+
+        .header-text {
+            text-align: center;
+            margin-top: 20%;
+        }
+
+        .header-text h1 {
+            font-size: 3rem;
+        }
+
+        .header-text p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2% 6%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        nav img {
+            width: 100px;
+        }
+
+        .nav-links ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .article-content {
+            padding: 4% 10%;
+            color: #333;
+            font-family: Arial, sans-serif;
+            display: none; 
+        }
+
+        .article-content .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #004085;
+        }
+
+        .article-content .author {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .article-content p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .article-content .article-img {
+            width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        /* Login Form Styles */
+        .login-form, .register-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #222; /* Dark background */
+            color: white; /* White text */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none; /* Initially hidden */
+        }
+
+        .login-form h2, .register-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-form input, .register-form input {
+            width: 60%; /* Shortened width */
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #333; /* Darker input background */
+            color: white; /* White text in input */
+        }
+
+        .login-form input::placeholder, .register-form input::placeholder {
+            color: #aaa; /* Light placeholder text */
+        }
+
+        .login-form button, .register-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #004085;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-form button:hover, .register-form button:hover {
+            background-color: #003060;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Login Form -->
+    <div class="login-form" id="loginForm">
+        <h2>Login</h2>
+        <input type="text" id="loginUsername" placeholder="Username" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button onclick="handleLogin()">Login</button>
+        <p>Don't have an account? <a href="javascript:void(0);" onclick="showRegister()" style="color: #aaa;">Register</a></p>
+    </div>
+
+    <!-- Register Form -->
+    <div class="register-form" id="registerForm">
+        <h2>Register</h2>
+        <input type="text" id="registerUsername" placeholder="Username" required>
+        <input type="password" id="registerPassword" placeholder="Password" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        <button onclick="handleRegister()">Register</button>
+        <p>Already have an account? <a href="javascript:void(0);" onclick="showLogin()" style="color: #aaa;">Login</a></p>
+    </div>
+
+    <section class="header" id="headerSection"> 
+        <nav>
+            <a href="javascript:void(0);"><img src="image/Logo.png" alt="Logo"></a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="javascript:void(0);" onclick="showHome()">HOME</a></li>
+                    <li><a href="javascript:void(0);" onclick="showAbout()">ABOUT</a></li>
+                    <li><a href="javascript:void(0);" onclick="showArticle()">ARTICLE</a></li>
+                    <li><a href="javascript:void(0);" onclick="showContact()">CONTACT</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header-text">
+            <h1>Welcome to Cebu Technological University News</h1>
+            <p>The latest news in CTU is here for you to view.</p>
+        </div>
+    </section>
+
+    <section class="article-content" id="article">
+        <div class="container">
+            <!-- Article 1 -->
+            <h1>𝐓𝐚𝐰𝐚𝐠 𝐧𝐠 𝐓𝐚𝐧𝐠𝐡𝐚𝐥𝐚𝐧</h1>
+            <p class="author">The School Showdown October 10, 2024.</p>
+            <img src="image/kenneth.jpg" alt="Article Image" class="article-img">
+            <p>
+                Congratulations 𝑲𝑬𝑵𝑵𝑬𝑻𝑯 𝑬𝑵𝑹𝑰𝑸𝑼𝑬𝒁 ,𝑩𝑰𝑻 𝑪𝑶𝑴𝑷𝑼𝑻𝑬𝑹 2𝑩 on your incredible performance in "𝐓𝐚𝐰𝐚𝐠 𝐧𝐠 𝐓𝐚𝐧𝐠𝐡𝐚𝐥𝐚𝐧"! Your talent truly shone on that stage, and it was a joy to witness 
+                your passion and dedication to music. It takes a lot of courage and hard work to showcase your skills, and you did it brilliantly!
+            </p>
+            <!-- Additional Articles ... -->
+             <h1>CTU Danao Students Showcase Talents at Annual CTU Night</h1>
+             <p class="author">By Mike Johnson - October 3, 2024</p>
+             <img src="image/article.jpg" alt="Article image" class="article-img">
+             <p>The Cebu Technological University (CTU) Danao Campus recently held its much-awaited annual CTU Night, 
+                where students displayed their impressive talents in a vibrant showcase of music, dance, and various artistic
+                performances.</p>
+
+
+            <h1>𝐂𝐞𝐛𝐮𝐓𝐞𝐜𝐡 𝐃𝐚𝐧𝐚𝐨 𝐓𝐞𝐚𝐜𝐡𝐞𝐫𝐬' 𝐃𝐚𝐲 | 𝐒𝐩𝐨𝐤𝐞𝐧 𝐖𝐨𝐫𝐝 𝐏𝐨𝐞𝐭𝐫𝐲 𝐖𝐢𝐧𝐧𝐞𝐫𝐬</h1>
+            <p class="author">Congratulations  𝐌𝐚𝐫𝐤 𝐋𝐨𝐫𝐞𝐧 𝐓. 𝐌𝐨𝐦𝐨 𝐟𝐫𝐨𝐦 𝐂𝐎𝐄 𝐝𝐞𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭 </p>
+            <img src="image/word.jpg" alt="Article Image" class="article-img">
+            <p>The talented poets took us through the significant moments when teachers profoundly impacted their students' lives. 
+                Each composition showcased unique voices while highlighting the efforts and sacrifices that exemplify the greatness of our teachers. 
+                While all participants wowed the audience and made a lasting impression, only one department could be hailed.</p>
+
+        </div>
+    </section>
+    <script>
+        let users = []; // Array to store registered users
+
+        // Show the login form
+        document.getElementById('loginForm').style.display = 'flex';
+
+        function handleLogin() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const user = users.find(u => u.username === username && u.password === password);
+            if (user) {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('headerSection').style.display = 'block';
+                document.querySelector('.article-content').style.display = 'block';
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+
+        function handleRegister() {
+            const username = document.getElementById('registerUsername').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Check if username already exists
+            if (users.find(u => u.username === username)) {
+                alert('Username already taken!');
+                return;
+            }
+
+            // Register the user
+            users.push({ username, password });
+            alert('Registration successful! Please log in.');
+            showLogin(); // Switch back to login form
+        }
+
+        function showRegister() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'flex';
+        }
+
+        function showLogin() {
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'flex';
+        }
+
+        function showArticle() {
+            document.querySelector('.header').style.display = 'none';
+            document.querySelector('.article-content').style.display = 'block';
+        }
+
+        function showHome() {
+            location.reload(); 
+        }
+
+        function showAbout() {
+            alert('About page content goes here.'); 
+        }
+
+        function showContact() {
+            alert('Contact page content goes here.');
+        }
+    </script>
+</body>
+</html>
